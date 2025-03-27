@@ -11,12 +11,11 @@
       
     - name: start apache2
       service:
-      name: apache2
-      state: started
+        name: apache2
+        state: started
 
-      name: Enable Apache2
+    - name: Enable Apache2
       service:
-      name: apache2
-      enabled: yes
-      
-             
+        name: apache2
+        enabled: yes
+
