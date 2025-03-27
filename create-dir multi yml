@@ -1,0 +1,44 @@
+---
+- name: Create /opt/devops directory and info.txt
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Ensure /opt/devops directory exists
+      file:
+        path: /opt/devops
+        state: directory
+        mode: '0755'
+
+    - name: Create info.txt with content
+      copy:
+        dest: /opt/devops/info.txt
+        content: "Hello from Ansible!"
+        mode: '0644'
+
+  name: Update n2 servers
+  hosts: n2
+  become: yes
+
+  tasks:
+    - name: Create Directory
+      file:
+        path: /opt/devops_1
+        state: directory
+        mode: '0755'
+
+    - name: Update group1 servers
+      hosts: g1
+
+      tasks:
+      - name: Create Directory 
+        file:
+          path: /opt/devops_group1
+          state: directory 
+
+      - name: Create Directory 
+        file:
+          path: /opt/devops_group2 
+          state: directory       
+
+
