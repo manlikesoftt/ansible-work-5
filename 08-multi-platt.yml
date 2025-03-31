@@ -4,40 +4,40 @@
   become: yes
 
   tasks:
-    - name: Install HTTPD
+    - name: Install HTTPD on Amazon and CentOS
       yum:
         name: httpd
         state: present
-      when: ansible_distribution == "Amazon"
+      when: ansible_distribution == "Amazon", "CentOS"
       
-    - name: start Httpd
+    - name: Start HTTPD on Amazon and CentOS
       service:
         name: httpd
         state: started
-      when: ansible_distribution == "Amazon"
+      when: ansible_distribution == "Amazon", "CentOS"
     
-    - name: Enable Httpd
+    - name: Enable HTTPD on Amazon and CentOS
       service:
         name: httpd
         enabled: yes
-      when: ansible_distribution == "Amazon"     
+      when: ansible_distribution == "Amazon", "CentOS"     
 
-    - name: Install Apache2
+    - name: Install Apache2 on Ubuntu and Debian
       apt:
         name: apache2
         state: present
-      when: ansible_distribution == "Ubuntu"
+      when: ansible_distribution == "Ubuntu", "Debian"
       
-    - name: start apache2
+    - name: Start Apache2 on Ubuntu and Debian
       service:
         name: apache2
         state: started
-      when: ansible_distribution == "Ubuntu"
+      when: ansible_distribution == "Ubuntu", "Debian"
 
-    - name: Enable Apache2
+    - name: Enable Apache2 on Ubuntu and Debian
       service:
         name: apache2
         enabled: yes
-      when: ansible_distribution == "Ubuntu"
+      when: ansible_distribution == "Ubuntu", "Debian"
 
 ...
