@@ -4,40 +4,48 @@
   become: yes
 
   tasks:
+    - name: Install python3 and python3-apt on Debian/Ubuntu
+      raw: |
+        apt update -y
+        apt install -y python3 python3-apt
+      when: ansible_os_family == "Debian"
+
     - name: Install HTTPD on Amazon and CentOS
       yum:
         name: httpd
         state: present
-      when: ansible_distribution == "Amazon", "CentOS"
-      
+        use_backend: auto
+      when: ansible_os_family == "RedHat"
+
     - name: Start HTTPD on Amazon and CentOS
       service:
         name: httpd
         state: started
-      when: ansible_distribution == "Amazon", "CentOS"
-    
+      when: ansible_os_family == "RedHat"
+
     - name: Enable HTTPD on Amazon and CentOS
       service:
         name: httpd
         enabled: yes
-      when: ansible_distribution == "Amazon", "CentOS"     
+      when: ansible_os_family == "RedHat"
 
     - name: Install Apache2 on Ubuntu and Debian
       apt:
         name: apache2
         state: present
-      when: ansible_distribution == "Ubuntu", "Debian"
-      
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
     - name: Start Apache2 on Ubuntu and Debian
       service:
         name: apache2
         state: started
-      when: ansible_distribution == "Ubuntu", "Debian"
+      when: ansible_os_family == "Debian"
 
     - name: Enable Apache2 on Ubuntu and Debian
       service:
         name: apache2
         enabled: yes
-      when: ansible_distribution == "Ubuntu", "Debian"
+      when: ansible_os_family == "Debian"
 
-...
+...      
