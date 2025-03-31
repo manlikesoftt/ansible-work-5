@@ -1,0 +1,11 @@
+---
+- name: Static Page
+  hosts: g1
+  become: yes
+
+  tasks:
+  - name: Update Static Page
+    template:
+      dest: /var/www/html/dynamic.j2
+      src: dynamic.j2
+...
