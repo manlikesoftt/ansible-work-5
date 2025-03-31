@@ -1,7 +1,8 @@
 ---
-- name: Install HTTP server
+- name: Install and configure HTTP server
   hosts: n2
   become: yes
+  roles: apache 
 
   tasks:
     - name: Install HTTPD
