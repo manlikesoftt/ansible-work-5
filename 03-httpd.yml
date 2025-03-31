@@ -1,5 +1,5 @@
 ---
-- name: Install and configure HTTP server
+- name: Install HTTP server
   hosts: g1
   become: yes
   roles: apache 
@@ -19,4 +19,5 @@
     - name: Enable Httpd
       service:
         name: httpd
-        enabled: yes     
+        enabled: yes 
+...            
