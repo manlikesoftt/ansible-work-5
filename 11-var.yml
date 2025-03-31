@@ -1,0 +1,13 @@
+---
+- name: Variation Demo
+  hosts: g1
+  become: yes
+  vars:
+  myusername: Ayomide
+
+  tasks:
+  - name: Update Dynamic Page
+    template:
+      dest: /var/www/html/dynamic.html
+      src: dynamic.j2
+...
