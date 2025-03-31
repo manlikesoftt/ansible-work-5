@@ -1,6 +1,6 @@
 ---
 - name: Install and configure HTTP server
-  hosts: n2
+  hosts: g1
   become: yes
   roles: apache 
 
