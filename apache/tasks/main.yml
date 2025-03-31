@@ -1,12 +1,12 @@
 ---
 # tasks file for apache
 ---
-- name: Install Apache
+- name: Install HTTP server
   package:
     name: httpd
     state: present
 
-- name: Start and enable Apache
+- name: Start and enable HTTP server
   service:
     name: httpd
     state: started

@@ -1,11 +1,11 @@
 ---
-- name: Install HTTP server
-  hosts: g1
+- hosts: g1
+  name: Install HTTP server
   become: yes
   roles: apache 
 
   tasks:
-    - name: Install HTTPD
+    - name: Install HTTPD package 
       yum:
         name: httpd
         state: present
